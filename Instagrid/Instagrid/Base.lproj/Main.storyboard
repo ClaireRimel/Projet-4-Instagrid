@@ -9,6 +9,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Delm-Medium.otf">
+            <string>Delm-Medium</string>
+        </array>
+        <array key="ThirstySoftRegular.otf">
+            <string>ThirstySoftRegular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -18,14 +26,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Instagrid-Label" translatesAutoresizingMaskIntoConstraints="NO" id="QgC-Ee-hD2">
-                                <rect key="frame" x="128" y="28" width="119" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Swipe-up-to-share-Label" translatesAutoresizingMaskIntoConstraints="NO" id="vNi-cY-TXc">
-                                <rect key="frame" x="108" y="144" width="161" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="roG-7n-UYR" userLabel="Layout-bleu-square">
                                 <rect key="frame" x="38" y="228" width="299" height="299"/>
                                 <color key="backgroundColor" red="0.092576660219999996" green="0.39662122729999999" blue="0.59610408540000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -57,6 +57,20 @@
                                     <constraint firstAttribute="height" constant="80" id="D4h-OX-Ewc"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instagrid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81v-an-sKt">
+                                <rect key="frame" x="127" y="44" width="119" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" red="0.59217095375061035" green="0.59214603900909424" blue="0.59215754270553589" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe up to share " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvq-mH-vth">
+                                <rect key="frame" x="112" y="144" width="165" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.72020429372787476" green="0.84234064817428589" blue="0.89805024862289429" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -77,10 +91,8 @@
     </scenes>
     <resources>
         <image name="Arrow-Up" width="15" height="10"/>
-        <image name="Instagrid-Label" width="111" height="29"/>
         <image name="Layout-1" width="80" height="80"/>
         <image name="Layout-2" width="80" height="80"/>
         <image name="Layout-3" width="80" height="80"/>
-        <image name="Swipe-up-to-share-Label" width="134" height="52"/>
     </resources>
 </document>
