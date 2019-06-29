@@ -10,7 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var layoutType: LayoutType = .oneTopTwoBottom
+    var layoutType: LayoutType = .oneTopTwoBottom {
+       didSet {
+            photoCollectionView.reloadData()
+        }
+    }
 
     @IBOutlet var photoCollectionView: UICollectionView!
     
@@ -38,11 +42,11 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return layoutType.numberOfItems(for: section)
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return layoutType.sections
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
