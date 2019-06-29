@@ -18,7 +18,6 @@ class ViewController: UIViewController {
       //  photoCollectionView.delegate = self
         photoCollectionView.dataSource = self
     }
-
     
     @IBAction func didSelectLayoutA(_ sender: Any) {
         
@@ -31,8 +30,6 @@ class ViewController: UIViewController {
     @IBAction func didSelectLayoutC(_ sender: Any) {
         
     }
-    
-    
     
 }
 
@@ -48,16 +45,13 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+    
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
         
         cell.photoImageView.image = UIImage(named: "Cross")
         
         return cell
     }
-    
-    
-    
-    
 }
 
 
