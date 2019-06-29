@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var layoutType: LayoutType = .oneTopTwoBottom
 
     @IBOutlet var photoCollectionView: UICollectionView!
     
@@ -20,15 +22,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didSelectLayoutA(_ sender: Any) {
-        
+        layoutType = .oneTopTwoBottom
     }
     
     @IBAction func didSelectLayoutB(_ sender: Any) {
-        
+        layoutType = .twoTopOneBottom
     }
     
     @IBAction func didSelectLayoutC(_ sender: Any) {
-        
+        layoutType = .twoTopTwoBottom
     }
     
 }
