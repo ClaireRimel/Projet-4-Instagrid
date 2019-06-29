@@ -13,9 +13,24 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        }
-        // Do any additional setup after loading the view.
     }
+    
+    @IBAction func didSelectLayoutA(_ sender: Any) {
+        
+    }
+    
+    @IBAction func didSelectLayoutB(_ sender: Any) {
+        
+    }
+    
+    @IBAction func didSelectLayoutC(_ sender: Any) {
+        
+    }
+    
+    
+}
+
+
 
 
 
