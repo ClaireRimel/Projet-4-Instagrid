@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="clip" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCl-N6-mSl">
-                                <rect key="frame" x="128.5" y="8" width="118.5" height="39"/>
+                                <rect key="frame" x="129" y="8" width="117" height="35"/>
                                 <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" red="0.59217095379999996" green="0.59214603899999996" blue="0.59215754269999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -90,7 +90,7 @@
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="X5g-vV-2fn">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                         <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qvb-9a-nWu">
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qvb-9a-nWu">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -108,6 +108,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         </imageView>
                                                     </subviews>
+                                                    <color key="backgroundColor" red="0.92180985209999999" green="0.50234770770000003" blue="0.49802267550000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="Zn4-Js-RTn" secondAttribute="bottom" id="MWO-T7-DKj"/>
                                                         <constraint firstAttribute="trailing" secondItem="Zn4-Js-RTn" secondAttribute="trailing" id="Wmw-0L-eAc"/>
@@ -115,6 +116,7 @@
                                                         <constraint firstItem="Zn4-Js-RTn" firstAttribute="leading" secondItem="ygf-oQ-NnM" secondAttribute="leading" id="q7C-Qd-07K"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
+                                                <color key="backgroundColor" red="0.050980392159999999" green="0.38823529410000002" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <outlet property="photoImageView" destination="Zn4-Js-RTn" id="b5z-SK-P0e"/>
                                                 </connections>
