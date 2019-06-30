@@ -25,6 +25,9 @@ class FooterView: UIView {
         super.awakeFromNib()
         layoutCollectionView.dataSource = self
         layoutCollectionView.delegate = self
+        
+        // We will programmatically force for the first layout to be selected
+        layoutCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .left)
     }
 }
 
