@@ -8,11 +8,18 @@
 
 import UIKit
 
+protocol FooterViewDelegate: class {
+    
+    func didSelect(layoutType: LayoutType)
+}
+
 class FooterView: UIView {
 
     @IBOutlet var layoutCollectionView: UICollectionView!
   
     let array = LayoutType.allCases
+    
+    weak var delegate: FooterViewDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,6 +47,11 @@ extension FooterView: UICollectionViewDataSource {
 
 extension FooterView: UICollectionViewDelegate {
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didSelect(layoutType: array[indexPath.row])
+    }
 }
+
+
+
 

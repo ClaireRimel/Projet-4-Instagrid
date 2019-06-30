@@ -24,18 +24,18 @@ class ViewController: UIViewController {
         photoCollectionView.delegate = self
     }
     
-    @IBAction func didSelectLayoutA(_ sender: Any) {
-        layoutType = .oneTopTwoBottom
-    }
-    
-    @IBAction func didSelectLayoutB(_ sender: Any) {
-        layoutType = .twoTopOneBottom
-    }
-    
-    @IBAction func didSelectLayoutC(_ sender: Any) {
-        layoutType = .twoTopTwoBottom
-    }
-    
+//    @IBAction func didSelectLayoutA(_ sender: Any) {
+//        layoutType = .oneTopTwoBottom
+//    }
+//    
+//    @IBAction func didSelectLayoutB(_ sender: Any) {
+//        layoutType = .twoTopOneBottom
+//    }
+//    
+//    @IBAction func didSelectLayoutC(_ sender: Any) {
+//        layoutType = .twoTopTwoBottom
+//    }
+//    
 }
 
 extension ViewController: UICollectionViewDataSource {
