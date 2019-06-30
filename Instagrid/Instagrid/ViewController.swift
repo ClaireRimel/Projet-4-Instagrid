@@ -17,25 +17,14 @@ class ViewController: UIViewController {
     }
 
     @IBOutlet var photoCollectionView: UICollectionView!
+    @IBOutlet var footerView: FooterView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         photoCollectionView.dataSource = self
         photoCollectionView.delegate = self
+        footerView.delegate = self
     }
-    
-//    @IBAction func didSelectLayoutA(_ sender: Any) {
-//        layoutType = .oneTopTwoBottom
-//    }
-//    
-//    @IBAction func didSelectLayoutB(_ sender: Any) {
-//        layoutType = .twoTopOneBottom
-//    }
-//    
-//    @IBAction func didSelectLayoutC(_ sender: Any) {
-//        layoutType = .twoTopTwoBottom
-//    }
-//    
 }
 
 extension ViewController: UICollectionViewDataSource {
@@ -89,4 +78,11 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         return 10
     }
 
+}
+
+extension ViewController: FooterViewDelegate {
+    
+    func didSelect(layoutType: LayoutType) {
+        self.layoutType = layoutType
+    }
 }

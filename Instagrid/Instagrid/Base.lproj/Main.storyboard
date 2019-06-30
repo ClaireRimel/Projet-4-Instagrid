@@ -89,7 +89,7 @@
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="X5g-vV-2fn">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" red="0.092576660219999996" green="0.39662122729999999" blue="0.59610408540000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qvb-9a-nWu">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -108,7 +108,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.92180985209999999" green="0.50234770770000003" blue="0.49802267550000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="Zn4-Js-RTn" secondAttribute="bottom" id="MWO-T7-DKj"/>
                                                         <constraint firstAttribute="trailing" secondItem="Zn4-Js-RTn" secondAttribute="trailing" id="Wmw-0L-eAc"/>
@@ -116,7 +116,7 @@
                                                         <constraint firstItem="Zn4-Js-RTn" firstAttribute="leading" secondItem="ygf-oQ-NnM" secondAttribute="leading" id="q7C-Qd-07K"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
-                                                <color key="backgroundColor" red="0.050980392159999999" green="0.38823529410000002" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="photoImageView" destination="Zn4-Js-RTn" id="b5z-SK-P0e"/>
                                                 </connections>
@@ -138,7 +138,7 @@
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hkS-Lm-RYo">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="80"/>
-                                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MPY-iX-mAD">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -179,7 +179,7 @@
                                         </cells>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.92180985209999999" green="0.50234770770000003" blue="0.49802267550000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="hkS-Lm-RYo" secondAttribute="bottom" id="EHZ-hO-y17"/>
                                     <constraint firstItem="hkS-Lm-RYo" firstAttribute="leading" secondItem="pZQ-M2-ajN" secondAttribute="leading" id="Wc1-KC-bLO"/>
@@ -286,6 +286,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="footerView" destination="pZQ-M2-ajN" id="bAf-zP-Dtz"/>
                         <outlet property="photoCollectionView" destination="X5g-vV-2fn" id="GoU-oV-lSP"/>
                     </connections>
                 </viewController>
