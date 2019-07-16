@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class ViewController: UIViewController {
     
@@ -15,6 +16,8 @@ class ViewController: UIViewController {
             photoCollectionView.reloadData()
         }
     }
+    
+    var indexPath: IndexPath?
 
     @IBOutlet var photoCollectionView: UICollectionView!
     @IBOutlet var footerView: FooterView!
@@ -46,7 +49,37 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDelegate {
 
-  
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let sourceType: UIImagePickerController.SourceType = .photoLibrary
+        
+        switch PHPhotoLibrary.authorizationStatus() {
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization { (status) in
+                if status == .authorized {
+                    print ("It's authorized")
+                }
+            }
+            
+        case .authorized:
+            self.indexPath = indexPath
+            //            DispatchQueue.main.async {
+            let controller = UIImagePickerController()
+            controller.sourceType = sourceType
+            controller.delegate = self
+            //                controller.allowsEditing = self
+            present(controller, animated: true, completion: nil)
+            
+            //            }
+            
+        case .denied:
+            print("Acces Photo denied")
+            
+        default:
+            break
+        }
+
+    }
 }
 
 
@@ -80,9 +113,26 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
 }
 
+
+
 extension ViewController: FooterViewDelegate {
     
     func didSelect(layoutType: LayoutType) {
         self.layoutType = layoutType
     }
 }
+
+
+extension ViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        let image = info[.originalImage] as! UIImage
+        
+        
+        let cell = photoCollectionView.cellForItem(at: indexPath!) as! PhotoCollectionViewCell
+        cell.photoImageView.image = image
+    }
+}
+
+extension ViewController: UINavigationControllerDelegate {}
