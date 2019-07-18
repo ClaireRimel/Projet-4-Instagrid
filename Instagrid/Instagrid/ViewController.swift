@@ -28,6 +28,39 @@ class ViewController: UIViewController {
         photoCollectionView.delegate = self
         footerView.delegate = self
     }
+    
+    func photoAccess(indexPath: IndexPath) {
+        let sourceType: UIImagePickerController.SourceType = .photoLibrary
+        
+        switch PHPhotoLibrary.authorizationStatus() {
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization { (status) in
+                if status == .authorized {
+                    print ("It's authorized")
+                    // recursion
+                    self.photoAccess(indexPath: indexPath)
+                }
+            }
+            
+        case .authorized:
+            self.indexPath = indexPath
+            //            DispatchQueue.main.async {
+            let controller = UIImagePickerController()
+            controller.sourceType = sourceType
+            controller.delegate = self
+            //                controller.allowsEditing = self
+            present(controller, animated: true, completion: nil)
+            
+            //            }
+            
+        case .denied:
+            print("Acces Photo denied")
+            
+        default:
+            break
+        }
+
+    }
 }
 
 extension ViewController: UICollectionViewDataSource {
@@ -50,35 +83,7 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let sourceType: UIImagePickerController.SourceType = .photoLibrary
-        
-        switch PHPhotoLibrary.authorizationStatus() {
-        case .notDetermined:
-            PHPhotoLibrary.requestAuthorization { (status) in
-                if status == .authorized {
-                    print ("It's authorized")
-                }
-            }
-            
-        case .authorized:
-            self.indexPath = indexPath
-            //            DispatchQueue.main.async {
-            let controller = UIImagePickerController()
-            controller.sourceType = sourceType
-            controller.delegate = self
-            //                controller.allowsEditing = self
-            present(controller, animated: true, completion: nil)
-            
-            //            }
-            
-        case .denied:
-            print("Acces Photo denied")
-            
-        default:
-            break
-        }
-
+        photoAccess(indexPath: indexPath)
     }
 }
 
@@ -110,9 +115,12 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
-
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        photoCollectionView.collectionViewLayout.invalidateLayout()
+    }
 }
-
 
 
 extension ViewController: FooterViewDelegate {
