@@ -22,8 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="clip" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCl-N6-mSl">
-                                <rect key="frame" x="148" y="52" width="118.5" height="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid " textAlignment="center" lineBreakMode="clip" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCl-N6-mSl">
+                                <rect key="frame" x="144" y="52" width="126" height="39"/>
                                 <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" red="0.59217095379999996" green="0.59214603899999996" blue="0.59215754269999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -292,6 +292,8 @@
                     <connections>
                         <outlet property="footerView" destination="pZQ-M2-ajN" id="bAf-zP-Dtz"/>
                         <outlet property="photoCollectionView" destination="X5g-vV-2fn" id="GoU-oV-lSP"/>
+                        <outlet property="photoGridCenterXConstraint" destination="rGq-Nx-8XD" id="ct8-dN-3y1"/>
+                        <outlet property="photoGridCenterYConstraint" destination="7fS-s5-N4k" id="az7-Qg-6pG"/>
                         <outlet property="photoGridView" destination="ccH-gs-wwK" id="lvQ-6c-6BR"/>
                         <outlet property="swipeGesture" destination="KCN-xW-QZ5" id="pLB-4U-gQW"/>
                     </connections>
@@ -303,7 +305,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="431" y="45"/>
+            <point key="canvasLocation" x="430.58035714285711" y="44.927536231884062"/>
         </scene>
     </scenes>
     <resources>

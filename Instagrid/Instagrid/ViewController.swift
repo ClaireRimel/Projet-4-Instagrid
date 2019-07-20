@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     @IBOutlet var footerView: FooterView!
     @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
     @IBOutlet var photoGridView: UIView!
+    @IBOutlet var photoGridCenterYConstraint: NSLayoutConstraint!
+    @IBOutlet var photoGridCenterXConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,11 +96,34 @@ class ViewController: UIViewController {
             //TODO: handle error
             return
         }
+        shareAnimation(begin: true)
         
-        // Displays share sheet with shares the generated image above 
+        // Displays share sheet with shares the generated image above
         let activityViewController = UIActivityViewController(activityItems: [jpgImage], applicationActivities: nil)
         activityViewController.excludedActivityTypes = [.assignToContact, .addToReadingList]
+        
+        activityViewController.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, arrayReturnedItems: [Any]?, error: Error?) in
+            
+            self.shareAnimation(begin: false)
+            
+        }
+        
         present(activityViewController, animated: true, completion: nil)
+    }
+    
+    func shareAnimation(begin: Bool) {
+        switch UIDevice.current.orientation {
+        case .portrait:
+            photoGridCenterYConstraint.constant = begin ? -1000 : 0
+        case .landscapeLeft, .landscapeRight:
+            photoGridCenterXConstraint.constant = begin ? -1000 : 0
+        default:
+            break
+        }
+        
+        UIView.animate(withDuration: 0.6) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
@@ -183,4 +208,3 @@ extension ViewController: UIImagePickerControllerDelegate {
 }
 
 extension ViewController: UINavigationControllerDelegate {}
-
