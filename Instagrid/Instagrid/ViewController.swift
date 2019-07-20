@@ -21,12 +21,31 @@ class ViewController: UIViewController {
 
     @IBOutlet var photoCollectionView: UICollectionView!
     @IBOutlet var footerView: FooterView!
+    @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         photoCollectionView.dataSource = self
         photoCollectionView.delegate = self
         footerView.delegate = self
+        
+        // We initially set the number the touches required by the swipe gesture and also its direction based on the current device orientation.
+        swipeGesture.numberOfTouchesRequired = 1
+        updateSwipeOrientation()
+        
+        // We subscribe this class to the Notification Center, triggering a call to the function "updateSwipeOrientation" when the device orientation changes, event which we use to set the correct swipeGesture direction.
+        NotificationCenter.default.addObserver(self, selector: #selector(updateSwipeOrientation), name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+    
+    @objc func updateSwipeOrientation() {
+        switch UIDevice.current.orientation {
+        case .portrait:
+            swipeGesture.direction = .up
+        case .landscapeLeft, .landscapeRight:
+            swipeGesture.direction = .left
+        default:
+            break
+        }
     }
     
     func photoAccess(indexPath: IndexPath) {
@@ -44,14 +63,14 @@ class ViewController: UIViewController {
             
         case .authorized:
             self.indexPath = indexPath
-            //            DispatchQueue.main.async {
+            // DispatchQueue.main.async {
             let controller = UIImagePickerController()
             controller.sourceType = sourceType
             controller.delegate = self
-            //                controller.allowsEditing = self
+            // controller.allowsEditing = self
             present(controller, animated: true, completion: nil)
             
-            //            }
+            //}
             
         case .denied:
             print("Acces Photo denied")
@@ -60,6 +79,12 @@ class ViewController: UIViewController {
             break
         }
 
+    }
+    
+    @IBAction func swipeToShare(_ sender: UISwipeGestureRecognizer) {
+        
+        let value = sender.location(in: view)
+         print (value)
     }
 }
 
@@ -144,3 +169,4 @@ extension ViewController: UIImagePickerControllerDelegate {
 }
 
 extension ViewController: UINavigationControllerDelegate {}
+

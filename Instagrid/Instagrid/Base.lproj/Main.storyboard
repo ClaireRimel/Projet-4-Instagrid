@@ -122,9 +122,13 @@
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="KCN-xW-QZ5" appends="YES" id="6Kf-aq-YVe"/>
+                                        </connections>
                                     </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.092576660219999996" green="0.39662122729999999" blue="0.59610408540000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="X5g-vV-2fn" secondAttribute="bottom" id="A4Y-kA-jkD"/>
                                     <constraint firstAttribute="trailing" secondItem="X5g-vV-2fn" secondAttribute="trailing" id="UWE-Fn-gP3"/>
@@ -288,9 +292,15 @@
                     <connections>
                         <outlet property="footerView" destination="pZQ-M2-ajN" id="bAf-zP-Dtz"/>
                         <outlet property="photoCollectionView" destination="X5g-vV-2fn" id="GoU-oV-lSP"/>
+                        <outlet property="swipeGesture" destination="KCN-xW-QZ5" id="pLB-4U-gQW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VQO-AP-gRg" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="up" id="KCN-xW-QZ5">
+                    <connections>
+                        <action selector="swipeToShare:" destination="VJI-jj-iRu" id="Eeu-gf-4YX"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="431" y="45"/>
         </scene>
