@@ -292,6 +292,7 @@
                     <connections>
                         <outlet property="footerView" destination="pZQ-M2-ajN" id="bAf-zP-Dtz"/>
                         <outlet property="photoCollectionView" destination="X5g-vV-2fn" id="GoU-oV-lSP"/>
+                        <outlet property="photoGridView" destination="ccH-gs-wwK" id="lvQ-6c-6BR"/>
                         <outlet property="swipeGesture" destination="KCN-xW-QZ5" id="pLB-4U-gQW"/>
                     </connections>
                 </viewController>

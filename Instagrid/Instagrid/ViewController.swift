@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet var photoCollectionView: UICollectionView!
     @IBOutlet var footerView: FooterView!
     @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
+    @IBOutlet var photoGridView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,8 +84,21 @@ class ViewController: UIViewController {
     
     @IBAction func swipeToShare(_ sender: UISwipeGestureRecognizer) {
         
-        let value = sender.location(in: view)
-         print (value)
+        //Generates an image of the current photo grid
+        UIGraphicsBeginImageContext(photoGridView.bounds.size)
+        photoGridView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        guard let jpgImage = image.jpegData(compressionQuality: 1.0) else {
+            //TODO: handle error
+            return
+        }
+        
+        // Displays share sheet with shares the generated image above 
+        let activityViewController = UIActivityViewController(activityItems: [jpgImage], applicationActivities: nil)
+        activityViewController.excludedActivityTypes = [.assignToContact, .addToReadingList]
+        present(activityViewController, animated: true, completion: nil)
     }
 }
 
