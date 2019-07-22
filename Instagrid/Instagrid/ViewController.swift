@@ -139,7 +139,7 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
-        cell.photoImageView.image = UIImage(named: "Cross")
+        cell.photoType = .placeholder
         return cell
     }
 }
@@ -201,9 +201,8 @@ extension ViewController: UIImagePickerControllerDelegate {
         picker.dismiss(animated: true, completion: nil)
         let image = info[.originalImage] as! UIImage
         
-        
         let cell = photoCollectionView.cellForItem(at: indexPath!) as! PhotoCollectionViewCell
-        cell.photoImageView.image = image
+        cell.photoType = .photo(image)
     }
 }
 

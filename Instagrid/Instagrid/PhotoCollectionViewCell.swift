@@ -8,8 +8,26 @@
 
 import UIKit
 
+enum PhotoType {
+    case placeholder
+    case photo(UIImage)
+}
+
 class PhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var photoImageView: UIImageView!
     
+    var photoType: PhotoType = .placeholder {
+        didSet {
+            switch photoType {
+            case .placeholder:
+                photoImageView.contentMode = .scaleAspectFit
+                photoImageView.image = UIImage(named: "Cross")
+
+            case .photo(let image):
+                photoImageView.contentMode = .scaleAspectFill
+                photoImageView.image = image
+            }
+        }
+    }
 }
