@@ -21,7 +21,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         didSet {
             switch photoType {
             case .placeholder:
-                photoImageView.contentMode = .scaleAspectFit
+                photoImageView.contentMode = .center
                 photoImageView.image = UIImage(named: "Cross")
 
             case .photo(let image):
