@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Photos
 
 class ViewController: UIViewController {
     
@@ -17,8 +16,6 @@ class ViewController: UIViewController {
         }
     }
     
-    var indexPath: IndexPath?
-
     @IBOutlet var photoCollectionView: UICollectionView!
     @IBOutlet var footerView: FooterView!
     @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
@@ -26,10 +23,13 @@ class ViewController: UIViewController {
     @IBOutlet var photoGridCenterYConstraint: NSLayoutConstraint!
     @IBOutlet var photoGridCenterXConstraint: NSLayoutConstraint!
     
+    let photoLibraryService = PhotoLibraryService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         photoCollectionView.dataSource = self
         photoCollectionView.delegate = self
+        photoLibraryService.delegate = self
         footerView.delegate = self
         
         // We initially set the number the touches required by the swipe gesture and also its direction based on the current device orientation.
@@ -49,39 +49,6 @@ class ViewController: UIViewController {
         default:
             break
         }
-    }
-    
-    func photoAccess(indexPath: IndexPath) {
-        let sourceType: UIImagePickerController.SourceType = .photoLibrary
-        
-        switch PHPhotoLibrary.authorizationStatus() {
-        case .notDetermined:
-            PHPhotoLibrary.requestAuthorization { (status) in
-                if status == .authorized {
-                    print ("It's authorized")
-                    // recursion
-                    self.photoAccess(indexPath: indexPath)
-                }
-            }
-            
-        case .authorized:
-            self.indexPath = indexPath
-            // DispatchQueue.main.async {
-            let controller = UIImagePickerController()
-            controller.sourceType = sourceType
-            controller.delegate = self
-            // controller.allowsEditing = self
-            present(controller, animated: true, completion: nil)
-            
-            //}
-            
-        case .denied:
-            print("Acces Photo denied")
-            
-        default:
-            break
-        }
-
     }
     
     @IBAction func swipeToShare(_ sender: UISwipeGestureRecognizer) {
@@ -147,7 +114,8 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        photoAccess(indexPath: indexPath)
+        photoLibraryService.photoAccess(indexPath: indexPath,
+                                        viewController: self)
     }
 }
 
@@ -194,16 +162,10 @@ extension ViewController: FooterViewDelegate {
     }
 }
 
-
-extension ViewController: UIImagePickerControllerDelegate {
+extension ViewController: PhotoLibraryServiceDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true, completion: nil)
-        let image = info[.originalImage] as! UIImage
-        
-        let cell = photoCollectionView.cellForItem(at: indexPath!) as! PhotoCollectionViewCell
+    func didChoose(image: UIImage, indexPath: IndexPath) {
+        let cell = photoCollectionView.cellForItem(at: indexPath) as! PhotoCollectionViewCell
         cell.photoType = .photo(image)
     }
 }
-
-extension ViewController: UINavigationControllerDelegate {}
