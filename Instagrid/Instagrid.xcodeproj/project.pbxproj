@@ -12,8 +12,10 @@
 		FA5A6B9F2281761800E373A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5A6B9D2281761800E373A6 /* Main.storyboard */; };
 		FA5A6BA42281761900E373A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5A6BA22281761900E373A6 /* LaunchScreen.storyboard */; };
 		FA5A6BAD228182AC00E373A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5A6BAB22817EAD00E373A6 /* Assets.xcassets */; };
+		FA9251AB22E77FDF00BC8550 /* PhotoShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9251AA22E77FDF00BC8550 /* PhotoShareService.swift */; };
 		FA98D12D22A120D800E8ADE9 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA98D12C22A120D800E8ADE9 /* Delm-Medium.otf */; };
 		FA98D12F22A1211200E8ADE9 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA98D12E22A1211200E8ADE9 /* ThirstySoftRegular.otf */; };
+		FAD2B0CE22E64333004665EB /* PhotoLibraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2B0CD22E64333004665EB /* PhotoLibraryService.swift */; };
 		FAFED06322C77325009828B9 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFED06222C77325009828B9 /* PhotoCollectionViewCell.swift */; };
 		FAFED06522C9358D009828B9 /* LayoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFED06422C9358D009828B9 /* LayoutCollectionViewCell.swift */; };
 		FAFED06722C93686009828B9 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFED06622C93686009828B9 /* FooterView.swift */; };
@@ -28,8 +30,10 @@
 		FA5A6BA32281761900E373A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA5A6BA52281761900E373A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA5A6BAB22817EAD00E373A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA9251AA22E77FDF00BC8550 /* PhotoShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoShareService.swift; path = Controller/PhotoShareService.swift; sourceTree = "<group>"; };
 		FA98D12C22A120D800E8ADE9 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		FA98D12E22A1211200E8ADE9 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
+		FAD2B0CD22E64333004665EB /* PhotoLibraryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoLibraryService.swift; path = Controller/PhotoLibraryService.swift; sourceTree = "<group>"; };
 		FAFED06222C77325009828B9 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAFED06422C9358D009828B9 /* LayoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAFED06622C93686009828B9 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				FA5A6B9B2281761800E373A6 /* ViewController.swift */,
+				FA9251AA22E77FDF00BC8550 /* PhotoShareService.swift */,
+				FAD2B0CD22E64333004665EB /* PhotoLibraryService.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -188,9 +194,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA5A6B9C2281761800E373A6 /* ViewController.swift in Sources */,
+				FAD2B0CE22E64333004665EB /* PhotoLibraryService.swift in Sources */,
 				FAFED06922C93BA2009828B9 /* LayoutType.swift in Sources */,
 				FAFED06322C77325009828B9 /* PhotoCollectionViewCell.swift in Sources */,
 				FAFED06722C93686009828B9 /* FooterView.swift in Sources */,
+				FA9251AB22E77FDF00BC8550 /* PhotoShareService.swift in Sources */,
 				FAFED06522C9358D009828B9 /* LayoutCollectionViewCell.swift in Sources */,
 				FA5A6B9A2281761800E373A6 /* AppDelegate.swift in Sources */,
 			);

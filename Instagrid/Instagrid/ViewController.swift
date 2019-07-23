@@ -24,12 +24,14 @@ class ViewController: UIViewController {
     @IBOutlet var photoGridCenterXConstraint: NSLayoutConstraint!
     
     let photoLibraryService = PhotoLibraryService()
+    let photoShareService = PhotoShareService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         photoCollectionView.dataSource = self
         photoCollectionView.delegate = self
         photoLibraryService.delegate = self
+        photoShareService.delegate = self
         footerView.delegate = self
         
         // We initially set the number the touches required by the swipe gesture and also its direction based on the current device orientation.
@@ -52,30 +54,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func swipeToShare(_ sender: UISwipeGestureRecognizer) {
-        
-        //Generates an image of the current photo grid
-        UIGraphicsBeginImageContext(photoGridView.bounds.size)
-        photoGridView.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        guard let jpgImage = image.jpegData(compressionQuality: 1.0) else {
-            //TODO: handle error
-            return
-        }
-        shareAnimation(begin: true)
-        
-        // Displays share sheet with shares the generated image above
-        let activityViewController = UIActivityViewController(activityItems: [jpgImage], applicationActivities: nil)
-        activityViewController.excludedActivityTypes = [.assignToContact, .addToReadingList]
-        
-        activityViewController.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, arrayReturnedItems: [Any]?, error: Error?) in
-            
-            self.shareAnimation(begin: false)
-            
-        }
-        
-        present(activityViewController, animated: true, completion: nil)
+     photoShareService.start(viewController: self)
     }
     
     func shareAnimation(begin: Bool) {
@@ -167,5 +146,20 @@ extension ViewController: PhotoLibraryServiceDelegate {
     func didChoose(image: UIImage, indexPath: IndexPath) {
         let cell = photoCollectionView.cellForItem(at: indexPath) as! PhotoCollectionViewCell
         cell.photoType = .photo(image)
+    }
+}
+
+extension ViewController: PhotoShareServiceDelegate {
+    
+    func willTakeImage() -> UIView {
+       return photoGridView
+    }
+    
+    func willDisplayShareSheet() {
+         shareAnimation(begin: true)
+    }
+    
+    func didDisplayShareSheet() {
+        shareAnimation(begin: false)
     }
 }
