@@ -36,10 +36,13 @@ class PhotoLibraryService: NSObject {
             
         case .authorized:
             self.indexPath = indexPath
-            let controller = UIImagePickerController()
-            controller.sourceType = sourceType
-            controller.delegate = self
-            viewController.present(controller, animated: true, completion: nil)
+            
+            DispatchQueue.main.async {
+                let controller = UIImagePickerController()
+                controller.sourceType = sourceType
+                controller.delegate = self
+                viewController.present(controller, animated: true, completion: nil)
+            }
      
         case .denied:
             print("Acces Photo denied")
