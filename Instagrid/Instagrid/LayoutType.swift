@@ -15,7 +15,7 @@ enum LayoutType: CaseIterable {
     case oneTopTwoBottom
     case twoTopOneBottom
     case twoTopTwoBottom
-    //    case nine
+    case threeTopThreeCenterThreeBottom
 }
 
 extension LayoutType {
@@ -28,6 +28,8 @@ extension LayoutType {
             return UIImage(named: "Layout-2")!
         case .twoTopTwoBottom:
             return UIImage(named: "Layout-3")!
+        case .threeTopThreeCenterThreeBottom:
+            return UIImage(named: "Layout-4")!
         }
     }
     
@@ -39,8 +41,8 @@ extension LayoutType {
             return 2
         case .twoTopTwoBottom:
             return 2
-            //        case .nine:
-            //            return 3
+        case .threeTopThreeCenterThreeBottom:
+            return 3
         }
     }
     
@@ -54,8 +56,8 @@ extension LayoutType {
                 return 2
             case .twoTopTwoBottom:
                 return 2
-                //            case .nine:
-                //                return 3
+            case .threeTopThreeCenterThreeBottom:
+                return 3
             }
             
         case 1:
@@ -66,17 +68,22 @@ extension LayoutType {
                 return 1
             case .twoTopTwoBottom:
                 return 2
-                //            case .nine:
-                //                return 3
+            case .threeTopThreeCenterThreeBottom:
+                return 3
             }
             
-            //        case 2:
-            //            switch self {
-            //            case .nine:
-            //                return 3
-            //            default:
-            //                return 0
-            //            }
+        case 2:
+            switch self {
+            
+            case .oneTopTwoBottom:
+                return 0
+            case .twoTopOneBottom:
+                return 0
+            case .twoTopTwoBottom:
+                return 0
+            case .threeTopThreeCenterThreeBottom:
+                return 3
+            }
         // The current logic only supports 2 sections, so in case of an API misuse we'll provide a default 0 value
         default:
             return 0

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Represents one LayoutType case, displaying the corresponding image for each. It also displays an image on top for its selected state.
 class LayoutCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var layoutImageView: UIImageView!
