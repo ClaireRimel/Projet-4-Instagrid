@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VJI-jj-iRu">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VJI-jj-iRu">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment version="4352" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -97,28 +98,38 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="M9I-6p-qmj" customClass="PhotoCollectionViewCell" customModule="Instagrid" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="LfO-Ya-g0P" customClass="PhotoCollectionViewCell" customModule="Instagrid" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ygf-oQ-NnM">
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zn4-Js-RTn">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSy-zj-Ser">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                        </imageView>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bGU-We-NHr">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="bGU-We-NHr" secondAttribute="trailing" id="77S-kg-dht"/>
+                                                                <constraint firstItem="bGU-We-NHr" firstAttribute="top" secondItem="rSy-zj-Ser" secondAttribute="top" id="8Pg-MI-kIl"/>
+                                                                <constraint firstItem="bGU-We-NHr" firstAttribute="leading" secondItem="rSy-zj-Ser" secondAttribute="leading" id="SyZ-aQ-9gy"/>
+                                                                <constraint firstAttribute="bottom" secondItem="bGU-We-NHr" secondAttribute="bottom" id="xU2-mq-Jn5"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="Zn4-Js-RTn" secondAttribute="bottom" id="MWO-T7-DKj"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Zn4-Js-RTn" secondAttribute="trailing" id="Wmw-0L-eAc"/>
-                                                        <constraint firstItem="Zn4-Js-RTn" firstAttribute="top" secondItem="ygf-oQ-NnM" secondAttribute="top" id="nog-ff-FWY"/>
-                                                        <constraint firstItem="Zn4-Js-RTn" firstAttribute="leading" secondItem="ygf-oQ-NnM" secondAttribute="leading" id="q7C-Qd-07K"/>
-                                                    </constraints>
-                                                </collectionViewCellContentView>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="rSy-zj-Ser" secondAttribute="bottom" id="6Db-J3-nQO"/>
+                                                    <constraint firstItem="rSy-zj-Ser" firstAttribute="leading" secondItem="LfO-Ya-g0P" secondAttribute="leading" id="p8L-O6-iN0"/>
+                                                    <constraint firstItem="rSy-zj-Ser" firstAttribute="top" secondItem="LfO-Ya-g0P" secondAttribute="top" id="pkg-2B-ULm"/>
+                                                    <constraint firstAttribute="trailing" secondItem="rSy-zj-Ser" secondAttribute="trailing" id="xwD-dm-bEm"/>
+                                                </constraints>
                                                 <connections>
-                                                    <outlet property="photoImageView" destination="Zn4-Js-RTn" id="b5z-SK-P0e"/>
+                                                    <outlet property="photoImageView" destination="bGU-We-NHr" id="AQr-Bd-3cx"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -143,41 +154,53 @@
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hkS-Lm-RYo">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="80"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MPY-iX-mAD">
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MPY-iX-mAD">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LayoutCollectionViewCell" id="wtc-lh-yHS" customClass="LayoutCollectionViewCell" customModule="Instagrid" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LayoutCollectionViewCell" id="B5Z-9P-TdP" customClass="LayoutCollectionViewCell" customModule="Instagrid" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="15" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EDL-Pr-h8N">
-                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aWk-fB-EzT">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                                        </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected-Layout" translatesAutoresizingMaskIntoConstraints="NO" id="1D6-Zl-uKt">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                                        </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9k-bN-xp9">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fke-zt-Zz1">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                </imageView>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="006-7k-5ga">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="fke-zt-Zz1" secondAttribute="bottom" id="AK4-4v-Q4v"/>
+                                                                <constraint firstAttribute="trailing" secondItem="006-7k-5ga" secondAttribute="trailing" id="AOn-it-eJF"/>
+                                                                <constraint firstItem="fke-zt-Zz1" firstAttribute="leading" secondItem="G9k-bN-xp9" secondAttribute="leading" id="TLs-fH-cvg"/>
+                                                                <constraint firstAttribute="bottom" secondItem="006-7k-5ga" secondAttribute="bottom" id="Vex-dt-AmR"/>
+                                                                <constraint firstItem="006-7k-5ga" firstAttribute="top" secondItem="G9k-bN-xp9" secondAttribute="top" id="bgJ-jw-V5F"/>
+                                                                <constraint firstItem="006-7k-5ga" firstAttribute="leading" secondItem="G9k-bN-xp9" secondAttribute="leading" id="cMM-YC-dtt"/>
+                                                                <constraint firstItem="fke-zt-Zz1" firstAttribute="top" secondItem="G9k-bN-xp9" secondAttribute="top" id="gXr-i1-xmf"/>
+                                                                <constraint firstAttribute="trailing" secondItem="fke-zt-Zz1" secondAttribute="trailing" id="tij-KS-fj9"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="1D6-Zl-uKt" secondAttribute="bottom" id="8AV-mr-97M"/>
-                                                        <constraint firstAttribute="trailing" secondItem="1D6-Zl-uKt" secondAttribute="trailing" id="9af-8G-h1U"/>
-                                                        <constraint firstItem="1D6-Zl-uKt" firstAttribute="leading" secondItem="EDL-Pr-h8N" secondAttribute="leading" id="DEH-Ql-sOx"/>
-                                                        <constraint firstItem="1D6-Zl-uKt" firstAttribute="top" secondItem="EDL-Pr-h8N" secondAttribute="top" id="GSf-jR-Wip"/>
-                                                        <constraint firstAttribute="trailing" secondItem="aWk-fB-EzT" secondAttribute="trailing" id="ULZ-rk-zRg"/>
-                                                        <constraint firstItem="aWk-fB-EzT" firstAttribute="leading" secondItem="EDL-Pr-h8N" secondAttribute="leading" id="jDs-dW-wVO"/>
-                                                        <constraint firstAttribute="bottom" secondItem="aWk-fB-EzT" secondAttribute="bottom" id="vhY-vp-uD7"/>
-                                                        <constraint firstItem="aWk-fB-EzT" firstAttribute="top" secondItem="EDL-Pr-h8N" secondAttribute="top" id="zUZ-lj-lWQ"/>
-                                                    </constraints>
-                                                </collectionViewCellContentView>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="G9k-bN-xp9" secondAttribute="bottom" id="0QR-nH-I6T"/>
+                                                    <constraint firstItem="G9k-bN-xp9" firstAttribute="top" secondItem="B5Z-9P-TdP" secondAttribute="top" id="J7S-fG-mmd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="G9k-bN-xp9" secondAttribute="trailing" id="PB1-yO-Svs"/>
+                                                    <constraint firstItem="G9k-bN-xp9" firstAttribute="leading" secondItem="B5Z-9P-TdP" secondAttribute="leading" id="PPG-BV-04g"/>
+                                                </constraints>
                                                 <connections>
-                                                    <outlet property="layoutImageView" destination="aWk-fB-EzT" id="oeT-Cs-OrI"/>
-                                                    <outlet property="selectedImageView" destination="1D6-Zl-uKt" id="EML-IG-oxZ"/>
+                                                    <outlet property="layoutImageView" destination="fke-zt-Zz1" id="cXQ-HZ-RZK"/>
+                                                    <outlet property="selectedImageView" destination="006-7k-5ga" id="uxV-xm-3X0"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -311,6 +334,5 @@
     <resources>
         <image name="Arrow-Left" width="10" height="15"/>
         <image name="Arrow-Up" width="15" height="10"/>
-        <image name="Selected-Layout" width="80" height="80"/>
     </resources>
 </document>
