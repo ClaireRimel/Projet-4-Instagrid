@@ -22,9 +22,12 @@ class ViewController: UIViewController {
     @IBOutlet var photoGridView: UIView!
     @IBOutlet var photoGridCenterYConstraint: NSLayoutConstraint!
     @IBOutlet var photoGridCenterXConstraint: NSLayoutConstraint!
+    @IBOutlet var swipeToShareStackView: UIStackView!
     
     let photoLibraryService = PhotoLibraryService()
     let photoShareService = PhotoShareService()
+    var isShareAnimationActive: Bool = false
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +48,6 @@ class ViewController: UIViewController {
     }
     
     @objc func didChangeDeviceOrientation() {
-        
         switch UIDevice.current.orientation {
         case .portrait:
             swipeGesture.direction = .up
@@ -54,14 +56,35 @@ class ViewController: UIViewController {
         default:
             break
         }
+        
         footerView.didChangeDeviceOrientation()
+        
+        if isShareAnimationActive {
+            switch UIDevice.current.orientation {
+            case .portrait:
+                photoGridCenterYConstraint.constant = -1000
+                photoGridCenterXConstraint.constant = 0
+                view.layoutIfNeeded()
+
+            case .landscapeLeft, .landscapeRight:
+                photoGridCenterYConstraint.constant = 0
+                photoGridCenterXConstraint.constant = -1000
+                view.layoutIfNeeded()
+
+            default:
+                break
+            }
+        }
     }
     
     @IBAction func swipeToShare(_ sender: UISwipeGestureRecognizer) {
      photoShareService.start(viewController: self)
     }
     
+    
     func shareAnimation(begin: Bool) {
+        isShareAnimationActive = begin
+        
         switch UIDevice.current.orientation {
         case .portrait:
             photoGridCenterYConstraint.constant = begin ? -1000 : 0
@@ -73,6 +96,8 @@ class ViewController: UIViewController {
         
         UIView.animate(withDuration: 1) {
             self.view.layoutIfNeeded()
+            self.photoGridView.alpha = begin ? 0.0 : 1.0
+            self.swipeToShareStackView.alpha = begin ? 0.0 : 1.0
         }
     }
 }
