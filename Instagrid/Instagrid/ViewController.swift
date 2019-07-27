@@ -33,16 +33,19 @@ class ViewController: UIViewController {
         photoLibraryService.delegate = self
         photoShareService.delegate = self
         footerView.delegate = self
-        
+
         // We initially set the number the touches required by the swipe gesture and also its direction based on the current device orientation.
         swipeGesture.numberOfTouchesRequired = 1
-        updateSwipeOrientation()
+        didChangeDeviceOrientation()
         
         // We subscribe this class to the Notification Center, triggering a call to the function "updateSwipeOrientation" when the device orientation changes, event which we use to set the correct swipeGesture direction.
-        NotificationCenter.default.addObserver(self, selector: #selector(updateSwipeOrientation), name: UIDevice.orientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeDeviceOrientation), name: UIDevice.orientationDidChangeNotification, object: nil)
+        
+       
     }
     
-    @objc func updateSwipeOrientation() {
+    @objc func didChangeDeviceOrientation() {
+        
         switch UIDevice.current.orientation {
         case .portrait:
             swipeGesture.direction = .up
@@ -51,6 +54,7 @@ class ViewController: UIViewController {
         default:
             break
         }
+        footerView.didChangeDeviceOrientation()
     }
     
     @IBAction func swipeToShare(_ sender: UISwipeGestureRecognizer) {
@@ -67,7 +71,7 @@ class ViewController: UIViewController {
             break
         }
         
-        UIView.animate(withDuration: 0.6) {
+        UIView.animate(withDuration: 1) {
             self.view.layoutIfNeeded()
         }
     }
@@ -118,7 +122,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let top: CGFloat = section == 0 ? 10 : 5
         let bottom: CGFloat = section == layoutType.sections - 1 ? 10 : 5
-//        let left: CGFloat =
         
         return UIEdgeInsets(top: top, left: 10, bottom: bottom, right: 10)
     }

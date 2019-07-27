@@ -29,7 +29,22 @@ class FooterView: UIView {
         // We will programmatically force for the first layout to be selected
         layoutCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .left)
     }
+
+    func didChangeDeviceOrientation() {
+        guard let layout = layoutCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        
+        switch UIDevice.current.orientation {
+        case .portrait:
+            layout.scrollDirection = .horizontal
+        case .landscapeLeft, .landscapeRight:
+            layout.scrollDirection = .vertical
+        default:
+            break
+        }
+    }
 }
+    
+
 
 extension FooterView: UICollectionViewDataSource {
     
