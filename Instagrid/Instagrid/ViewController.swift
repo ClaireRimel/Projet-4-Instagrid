@@ -8,34 +8,29 @@
 
 import UIKit
 
+protocol ViewControllerDelegate: class {
+    
+    func didSelect(indexPath: IndexPath)
+}
+
 class ViewController: UIViewController {
     
-    var layoutType: LayoutType = .oneTopTwoBottom {
-       didSet {
-            photoCollectionView.reloadData()
-        }
-    }
     
-    @IBOutlet var photoCollectionView: UICollectionView!
     @IBOutlet var footerView: FooterView!
     @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
-    @IBOutlet var photoGridView: UIView!
+    @IBOutlet var photoGridView: PhotoGridView!
     @IBOutlet var photoGridCenterYConstraint: NSLayoutConstraint!
     @IBOutlet var photoGridCenterXConstraint: NSLayoutConstraint!
     @IBOutlet var swipeToShareStackView: UIStackView!
-    
-    let photoLibraryService = PhotoLibraryService()
-    let photoShareService = PhotoShareService()
+
     var isShareAnimationActive: Bool = false
 
+    weak var delegate: ViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        photoCollectionView.dataSource = self
-        photoCollectionView.delegate = self
-        photoLibraryService.delegate = self
-        photoShareService.delegate = self
         footerView.delegate = self
+        photoGridView.delegate = self
 
         // We initially set the number the touches required by the swipe gesture and also its direction based on the current device orientation.
         swipeGesture.numberOfTouchesRequired = 1
@@ -100,94 +95,32 @@ class ViewController: UIViewController {
             self.swipeToShareStackView.alpha = begin ? 0.0 : 1.0
         }
     }
-}
-
-extension ViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return layoutType.numberOfItems(for: section)
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return layoutType.sections
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
-        cell.photoType = .placeholder
-        return cell
-    }
-}
-
-extension ViewController: UICollectionViewDelegate {
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        photoLibraryService.photoAccess(indexPath: indexPath,
-                                        viewController: self)
-    }
-}
-
-
-extension ViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let heightMargin = (layoutType.sections + 1) * 10
-        let divisableHeight = Double(collectionView.frame.height) - Double(heightMargin)
-        let cellHeight = divisableHeight / Double(layoutType.sections)
-        
-        let numberOfItems = layoutType.numberOfItems(for: indexPath.section)
-        let widthMargin = (numberOfItems + 1) * 10
-        let divisableWidth = Double(collectionView.frame.width) - Double(widthMargin)
-        let cellWidth = divisableWidth / Double(numberOfItems)
-        
-        return CGSize(width: cellWidth, height: cellHeight)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let top: CGFloat = section == 0 ? 10 : 5
-        let bottom: CGFloat = section == layoutType.sections - 1 ? 10 : 5
-        
-        return UIEdgeInsets(top: top, left: 10, bottom: bottom, right: 10)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        photoCollectionView.collectionViewLayout.invalidateLayout()
+//        photoCollectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    func set(image: UIImage, indexPath: IndexPath) {
+        photoGridView.set(image: image, indexPath: indexPath)
+    }
+    
+    func set(layoutType: LayoutType) {
+        photoGridView.layoutType = layoutType
     }
 }
-
 
 extension ViewController: FooterViewDelegate {
     
-    func didSelect(layoutType: LayoutType) {
-        self.layoutType = layoutType
+    func didSelect(indexPath: IndexPath) {
+        delegate?.didSelect(indexPath: indexPath)
     }
 }
 
-extension ViewController: PhotoLibraryServiceDelegate {
+extension ViewController: PhotoGridViewDelegate {
     
-    func didChoose(image: UIImage, indexPath: IndexPath) {
-        let cell = photoCollectionView.cellForItem(at: indexPath) as! PhotoCollectionViewCell
-        cell.photoType = .photo(image)
-    }
-}
-
-extension ViewController: PhotoShareServiceDelegate {
-    
-    func willTakeImage() -> UIView {
-       return photoGridView
-    }
-    
-    func willDisplayShareSheet() {
-         shareAnimation(begin: true)
-    }
-    
-    func didDisplayShareSheet() {
-        shareAnimation(begin: false)
+    func didSelect(indexPath: IndexPath) {
+        photoLibraryService.photoAccess(indexPath: indexPath,
+                                                viewController: self)
     }
 }

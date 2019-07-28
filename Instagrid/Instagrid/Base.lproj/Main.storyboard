@@ -85,7 +85,7 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ccH-gs-wwK" userLabel="Layout-bleu-square">
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ccH-gs-wwK" userLabel="Layout-bleu-square" customClass="PhotoGridView" customModule="Instagrid" customModuleProvider="target">
                                 <rect key="frame" x="37" y="256" width="300" height="300"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="X5g-vV-2fn">

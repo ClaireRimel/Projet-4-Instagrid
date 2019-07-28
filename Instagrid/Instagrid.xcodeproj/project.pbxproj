@@ -16,6 +16,8 @@
 		FA98D12D22A120D800E8ADE9 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA98D12C22A120D800E8ADE9 /* Delm-Medium.otf */; };
 		FA98D12F22A1211200E8ADE9 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA98D12E22A1211200E8ADE9 /* ThirstySoftRegular.otf */; };
 		FA9FBD8222EE0C5100C5C259 /* LayoutType+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FBD8122EE0C5100C5C259 /* LayoutType+Image.swift */; };
+		FA9FBD8422EE14CE00C5C259 /* PhotoGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FBD8322EE14CE00C5C259 /* PhotoGridView.swift */; };
+		FA9FBD8622EE214900C5C259 /* LogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FBD8522EE214900C5C259 /* LogicController.swift */; };
 		FAD2B0CE22E64333004665EB /* PhotoLibraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2B0CD22E64333004665EB /* PhotoLibraryService.swift */; };
 		FAFED06322C77325009828B9 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFED06222C77325009828B9 /* PhotoCollectionViewCell.swift */; };
 		FAFED06522C9358D009828B9 /* LayoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFED06422C9358D009828B9 /* LayoutCollectionViewCell.swift */; };
@@ -35,6 +37,8 @@
 		FA98D12C22A120D800E8ADE9 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		FA98D12E22A1211200E8ADE9 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
 		FA9FBD8122EE0C5100C5C259 /* LayoutType+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "LayoutType+Image.swift"; path = "View/LayoutType+Image.swift"; sourceTree = "<group>"; };
+		FA9FBD8322EE14CE00C5C259 /* PhotoGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoGridView.swift; path = View/PhotoGridView.swift; sourceTree = "<group>"; };
+		FA9FBD8522EE214900C5C259 /* LogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LogicController.swift; path = Controller/LogicController.swift; sourceTree = "<group>"; };
 		FAD2B0CD22E64333004665EB /* PhotoLibraryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoLibraryService.swift; path = Controller/PhotoLibraryService.swift; sourceTree = "<group>"; };
 		FAFED06222C77325009828B9 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAFED06422C9358D009828B9 /* LayoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 		FA5A6BC222818F6300E373A6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FA9FBD8522EE214900C5C259 /* LogicController.swift */,
 				FA5A6B9B2281761800E373A6 /* ViewController.swift */,
 				FA9251AA22E77FDF00BC8550 /* PhotoShareService.swift */,
 				FAD2B0CD22E64333004665EB /* PhotoLibraryService.swift */,
@@ -106,6 +111,7 @@
 				FAFED06422C9358D009828B9 /* LayoutCollectionViewCell.swift */,
 				FAFED06622C93686009828B9 /* FooterView.swift */,
 				FA9FBD8122EE0C5100C5C259 /* LayoutType+Image.swift */,
+				FA9FBD8322EE14CE00C5C259 /* PhotoGridView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -197,12 +203,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA5A6B9C2281761800E373A6 /* ViewController.swift in Sources */,
+				FA9FBD8422EE14CE00C5C259 /* PhotoGridView.swift in Sources */,
 				FAD2B0CE22E64333004665EB /* PhotoLibraryService.swift in Sources */,
 				FA9FBD8222EE0C5100C5C259 /* LayoutType+Image.swift in Sources */,
 				FAFED06922C93BA2009828B9 /* LayoutType.swift in Sources */,
 				FAFED06322C77325009828B9 /* PhotoCollectionViewCell.swift in Sources */,
 				FAFED06722C93686009828B9 /* FooterView.swift in Sources */,
 				FA9251AB22E77FDF00BC8550 /* PhotoShareService.swift in Sources */,
+				FA9FBD8622EE214900C5C259 /* LogicController.swift in Sources */,
 				FAFED06522C9358D009828B9 /* LayoutCollectionViewCell.swift in Sources */,
 				FA5A6B9A2281761800E373A6 /* AppDelegate.swift in Sources */,
 			);
