@@ -19,20 +19,6 @@ enum LayoutType: CaseIterable {
 }
 
 extension LayoutType {
-    
-    var image: UIImage {
-        switch self {
-        case .oneTopTwoBottom:
-            return UIImage(named: "Layout-1")!
-        case .twoTopOneBottom:
-            return UIImage(named: "Layout-2")!
-        case .twoTopTwoBottom:
-            return UIImage(named: "Layout-3")!
-        case .threeTopThreeCenterThreeBottom:
-            return UIImage(named: "Layout-4")!
-        }
-    }
-    
     var sections: Int {
         switch self {
         case .oneTopTwoBottom:

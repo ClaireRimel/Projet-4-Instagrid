@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FA30C09322EA57F70067A961 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA30C09222EA57F70067A961 /* Storyboard.storyboard */; };
 		FA5A6B9A2281761800E373A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A6B992281761800E373A6 /* AppDelegate.swift */; };
 		FA5A6B9C2281761800E373A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A6B9B2281761800E373A6 /* ViewController.swift */; };
 		FA5A6B9F2281761800E373A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5A6B9D2281761800E373A6 /* Main.storyboard */; };
@@ -16,6 +15,7 @@
 		FA9251AB22E77FDF00BC8550 /* PhotoShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9251AA22E77FDF00BC8550 /* PhotoShareService.swift */; };
 		FA98D12D22A120D800E8ADE9 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA98D12C22A120D800E8ADE9 /* Delm-Medium.otf */; };
 		FA98D12F22A1211200E8ADE9 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA98D12E22A1211200E8ADE9 /* ThirstySoftRegular.otf */; };
+		FA9FBD8222EE0C5100C5C259 /* LayoutType+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FBD8122EE0C5100C5C259 /* LayoutType+Image.swift */; };
 		FAD2B0CE22E64333004665EB /* PhotoLibraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2B0CD22E64333004665EB /* PhotoLibraryService.swift */; };
 		FAFED06322C77325009828B9 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFED06222C77325009828B9 /* PhotoCollectionViewCell.swift */; };
 		FAFED06522C9358D009828B9 /* LayoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFED06422C9358D009828B9 /* LayoutCollectionViewCell.swift */; };
@@ -24,7 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FA30C09222EA57F70067A961 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		FA5A6B962281761800E373A6 /* Instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5A6B992281761800E373A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA5A6B9B2281761800E373A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +34,7 @@
 		FA9251AA22E77FDF00BC8550 /* PhotoShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoShareService.swift; path = Controller/PhotoShareService.swift; sourceTree = "<group>"; };
 		FA98D12C22A120D800E8ADE9 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		FA98D12E22A1211200E8ADE9 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
+		FA9FBD8122EE0C5100C5C259 /* LayoutType+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "LayoutType+Image.swift"; path = "View/LayoutType+Image.swift"; sourceTree = "<group>"; };
 		FAD2B0CD22E64333004665EB /* PhotoLibraryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoLibraryService.swift; path = Controller/PhotoLibraryService.swift; sourceTree = "<group>"; };
 		FAFED06222C77325009828B9 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAFED06422C9358D009828B9 /* LayoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 				FAFED06222C77325009828B9 /* PhotoCollectionViewCell.swift */,
 				FAFED06422C9358D009828B9 /* LayoutCollectionViewCell.swift */,
 				FAFED06622C93686009828B9 /* FooterView.swift */,
-				FA30C09222EA57F70067A961 /* Storyboard.storyboard */,
+				FA9FBD8122EE0C5100C5C259 /* LayoutType+Image.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -186,7 +186,6 @@
 				FA98D12D22A120D800E8ADE9 /* Delm-Medium.otf in Resources */,
 				FA5A6BAD228182AC00E373A6 /* Assets.xcassets in Resources */,
 				FA5A6B9F2281761800E373A6 /* Main.storyboard in Resources */,
-				FA30C09322EA57F70067A961 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +198,7 @@
 			files = (
 				FA5A6B9C2281761800E373A6 /* ViewController.swift in Sources */,
 				FAD2B0CE22E64333004665EB /* PhotoLibraryService.swift in Sources */,
+				FA9FBD8222EE0C5100C5C259 /* LayoutType+Image.swift in Sources */,
 				FAFED06922C93BA2009828B9 /* LayoutType.swift in Sources */,
 				FAFED06322C77325009828B9 /* PhotoCollectionViewCell.swift in Sources */,
 				FAFED06722C93686009828B9 /* FooterView.swift in Sources */,
@@ -350,6 +350,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BDMB887655;
 				INFOPLIST_FILE = Instagrid/Info.plist;
@@ -360,6 +361,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ClaireSivadier.Instagrid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -369,6 +371,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BDMB887655;
 				INFOPLIST_FILE = Instagrid/Info.plist;
@@ -379,6 +382,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ClaireSivadier.Instagrid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
