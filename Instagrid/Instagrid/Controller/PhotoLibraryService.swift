@@ -12,6 +12,8 @@ import Photos
 protocol PhotoLibraryServiceDelegate: class {
     
     func photoLibraryService(_ photoLibraryService: PhotoLibraryService, didChoose image: UIImage, at indexPath: IndexPath)
+    
+    func photoLibraryServiceAuthorizationDenied(_ photoLibraryService: PhotoLibraryService)
 }
 
 class PhotoLibraryService: NSObject {
@@ -46,7 +48,7 @@ class PhotoLibraryService: NSObject {
      
         case .denied:
             print("Acces Photo denied")
-            
+            delegate?.photoLibraryServiceAuthorizationDenied(self)
         default:
             break
         }

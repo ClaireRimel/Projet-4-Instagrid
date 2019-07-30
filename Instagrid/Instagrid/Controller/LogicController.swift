@@ -30,6 +30,10 @@ class LogicController {
 
 extension LogicController: PhotoLibraryServiceDelegate {
     
+    func photoLibraryServiceAuthorizationDenied(_ photoLibraryService: PhotoLibraryService) {
+        viewController.displayPhotoServiceDeniedAuthorizationMessage()
+    }
+    
     func photoLibraryService(_ photoLibraryService: PhotoLibraryService, didChoose image: UIImage, at indexPath: IndexPath) {
         viewController.set(image: image, indexPath: indexPath)
     }
@@ -51,6 +55,18 @@ extension LogicController: PhotoShareServiceDelegate {
 }
 
 extension LogicController: ViewControllerDelegate {
+    
+    func viewControllerDidPressOpenSettings(_ viewController: ViewController) {
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+        
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                print("Settings opened: \(success)") // Prints true
+            })
+        }
+    }
     
     func viewControllerDidSwipeToShare(_ viewController: ViewController) {
         photoShareService.start(viewController: viewController)

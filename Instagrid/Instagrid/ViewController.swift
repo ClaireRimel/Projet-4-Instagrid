@@ -16,6 +16,7 @@ protocol ViewControllerDelegate: class {
     
     func viewControllerDidSwipeToShare(_ viewController: ViewController)
 
+    func viewControllerDidPressOpenSettings(_ viewController: ViewController)
 }
 
 class ViewController: UIViewController {
@@ -111,6 +112,18 @@ class ViewController: UIViewController {
     
     func set(layoutType: LayoutType) {
         photoGridView.layoutType = layoutType
+    }
+    
+    func displayPhotoServiceDeniedAuthorizationMessage(){
+        let messageAlert = UIAlertController(title: "Photo Library", message: "Authorization Denied", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { [weak self] _ in
+            guard let self = self else { return }
+            self.delegate?.viewControllerDidPressOpenSettings(self)
+        })
+        messageAlert.addAction(cancelAction)
+        messageAlert.addAction(settingsAction)
+        present(messageAlert, animated: true, completion: nil)
     }
 }
 
