@@ -102,7 +102,7 @@ class ViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        photoCollectionView.collectionViewLayout.invalidateLayout()
+        photoGridView.invalidateCollectionViewLayout()
     }
     
     func set(image: UIImage, indexPath: IndexPath) {

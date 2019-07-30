@@ -36,6 +36,10 @@ class PhotoGridView: UIView {
         let cell = photoCollectionView.cellForItem(at: indexPath) as! PhotoCollectionViewCell
         cell.photoType = .photo(image)
     }
+    
+    func invalidateCollectionViewLayout() {
+        photoCollectionView.collectionViewLayout.invalidateLayout()
+    }
 }
 
 extension PhotoGridView: UICollectionViewDataSource {
