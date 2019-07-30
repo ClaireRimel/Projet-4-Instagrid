@@ -38,8 +38,8 @@ class PhotoShareService {
             let activityViewController = UIActivityViewController(activityItems: [jpgImage], applicationActivities: nil)
             activityViewController.excludedActivityTypes = [.assignToContact, .addToReadingList]
             
-            activityViewController.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, arrayReturnedItems: [Any]?, error: Error?) in
-
+            activityViewController.completionWithItemsHandler = { [weak self] (activityType: UIActivity.ActivityType?, completed: Bool, arrayReturnedItems: [Any]?, error: Error?) in
+                guard let self = self else { return }
                 self.delegate?.photoShareServiceDidDisplayShareSheet(self)
             }
             
