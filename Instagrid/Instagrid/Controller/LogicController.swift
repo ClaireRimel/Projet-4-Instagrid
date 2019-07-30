@@ -24,6 +24,7 @@ class LogicController {
         self.viewController = viewController
         photoLibraryService.delegate = self
         photoShareService.delegate = self
+        viewController.delegate = self
     }
 }
 
@@ -51,7 +52,16 @@ extension LogicController: PhotoShareServiceDelegate {
 
 extension LogicController: ViewControllerDelegate {
     
-    func viewControllerDidSelect(_ viewController: ViewController, indexPath: IndexPath) {
+    func viewControllerDidSwipeToShare(_ viewController: ViewController) {
+        photoShareService.start(viewController: viewController)
+    }
+    
+    func viewController(_ viewController: ViewController, didSelectLayoutAt indexPath: IndexPath) {
         layoutType = LayoutType.allCases[indexPath.row]
+    }
+    
+    func viewController(_ viewController: ViewController, didSelectPhotoAt indexPath: IndexPath) {
+        photoLibraryService.photoAccess(indexPath: indexPath,
+                                        viewController: viewController)
     }
 }

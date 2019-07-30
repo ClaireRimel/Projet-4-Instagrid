@@ -10,7 +10,12 @@ import UIKit
 
 protocol ViewControllerDelegate: class {
     
-    func viewControllerDidSelect(_ viewController: ViewController, indexPath: IndexPath)
+    func viewController(_ viewController: ViewController, didSelectLayoutAt indexPath: IndexPath)
+    
+    func viewController(_ viewController: ViewController, didSelectPhotoAt indexPath: IndexPath)
+    
+    func viewControllerDidSwipeToShare(_ viewController: ViewController)
+
 }
 
 class ViewController: UIViewController {
@@ -73,9 +78,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func swipeToShare(_ sender: UISwipeGestureRecognizer) {
-     photoShareService.start(viewController: self)
+        delegate?.viewControllerDidSwipeToShare(self)
     }
-    
     
     func shareAnimation(begin: Bool) {
         isShareAnimationActive = begin
@@ -113,14 +117,13 @@ class ViewController: UIViewController {
 extension ViewController: FooterViewDelegate {
     
     func footerViewDidSelect(_ footerView: FooterView, indexPath: IndexPath) {
-        delegate?.viewControllerDidSelect(self, indexPath: indexPath)
+        delegate?.viewController(self, didSelectLayoutAt: indexPath)
     }
 }
 
 extension ViewController: PhotoGridViewDelegate {
     
     func photoGridViewDidSelect(_ photoGridView: PhotoGridView, indexPath: IndexPath) {
-        PhotoLibraryService.photoAccess(indexPath: indexPath,
-                                        viewController: self)
+        delegate?.viewController(self, didSelectPhotoAt: indexPath)
     }
 }
