@@ -23,19 +23,14 @@ class PhotoShareService {
     
     func start(viewController: UIViewController) {
         if let view = delegate?.photoShareServiceWillTakeImage(self) {
-            UIGraphicsBeginImageContext(view.bounds.size)
-            view.layer.render(in: UIGraphicsGetCurrentContext()!)
-            let image = UIGraphicsGetImageFromCurrentImageContext()!
-            UIGraphicsEndImageContext()
-            
-            guard let jpgImage = image.jpegData(compressionQuality: 1.0) else {
-                //TODO: handle error
-                return
+            let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
+            let image = renderer.image { ctx in
+                view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
             }
             
             delegate?.photoShareServiceWillDisplayShareSheet(self)
             
-            let activityViewController = UIActivityViewController(activityItems: [jpgImage], applicationActivities: nil)
+            let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
             activityViewController.excludedActivityTypes = [.assignToContact, .addToReadingList]
             
             activityViewController.completionWithItemsHandler = { [weak self] (activityType: UIActivity.ActivityType?, completed: Bool, arrayReturnedItems: [Any]?, error: Error?) in
