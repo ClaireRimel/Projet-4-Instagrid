@@ -10,11 +10,11 @@ import UIKit
 
 protocol PhotoShareServiceDelegate: class {
     
-    func willTakeImage() -> UIView
+    func photoShareServiceWillTakeImage(_ photoShareService: PhotoShareService) -> UIView
     
-    func willDisplayShareSheet()
+    func photoShareServiceWillDisplayShareSheet(_ photoShareService: PhotoShareService)
     
-    func didDisplayShareSheet()
+    func photoShareServiceDidDisplayShareSheet(_ photoShareService: PhotoShareService)
 }
 
 class PhotoShareService {
@@ -22,7 +22,7 @@ class PhotoShareService {
     weak var delegate: PhotoShareServiceDelegate?
     
     func start(viewController: UIViewController) {
-        if let view = delegate?.willTakeImage(){
+        if let view = delegate?.photoShareServiceWillTakeImage(self) {
             UIGraphicsBeginImageContext(view.bounds.size)
             view.layer.render(in: UIGraphicsGetCurrentContext()!)
             let image = UIGraphicsGetImageFromCurrentImageContext()!
@@ -33,14 +33,14 @@ class PhotoShareService {
                 return
             }
             
-            delegate?.willDisplayShareSheet()
+            delegate?.photoShareServiceWillDisplayShareSheet(self)
             
             let activityViewController = UIActivityViewController(activityItems: [jpgImage], applicationActivities: nil)
             activityViewController.excludedActivityTypes = [.assignToContact, .addToReadingList]
             
             activityViewController.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, arrayReturnedItems: [Any]?, error: Error?) in
 
-                self.delegate?.didDisplayShareSheet()
+                self.delegate?.photoShareServiceDidDisplayShareSheet(self)
             }
             
             viewController.present(activityViewController, animated: true, completion: nil)

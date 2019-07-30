@@ -10,7 +10,7 @@ import UIKit
 
 protocol FooterViewDelegate: class {
     
-    func didSelect(indexPath: IndexPath)
+    func footerViewDidSelect(_ footerView: FooterView, indexPath: IndexPath)
 }
 
 class FooterView: UIView {
@@ -64,7 +64,7 @@ extension FooterView: UICollectionViewDataSource {
 extension FooterView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelect(indexPath: indexPath)
+        delegate?.footerViewDidSelect(self, indexPath: indexPath)
     }
 }
 

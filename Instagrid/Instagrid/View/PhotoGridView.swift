@@ -10,7 +10,7 @@ import UIKit
 
 protocol PhotoGridViewDelegate: class {
     
-    func didSelect(indexPath: IndexPath)
+    func photoGridViewDidSelect(_ photoGridView: PhotoGridView, indexPath: IndexPath)
 }
 
 class PhotoGridView: UIView {
@@ -58,7 +58,7 @@ extension PhotoGridView: UICollectionViewDataSource {
 extension PhotoGridView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelect(indexPath: indexPath)
+        delegate?.photoGridViewDidSelect(self, indexPath: indexPath)
     }
 }
 

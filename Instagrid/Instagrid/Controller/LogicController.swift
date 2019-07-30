@@ -29,29 +29,29 @@ class LogicController {
 
 extension LogicController: PhotoLibraryServiceDelegate {
     
-    func didChoose(image: UIImage, indexPath: IndexPath) {
+    func photoLibraryService(_ photoLibraryService: PhotoLibraryService, didChoose image: UIImage, at indexPath: IndexPath) {
         viewController.set(image: image, indexPath: indexPath)
     }
 }
 
 extension LogicController: PhotoShareServiceDelegate {
     
-    func willTakeImage() -> UIView {
+    func photoShareServiceWillTakeImage(_ photoShareService: PhotoShareService) -> UIView {
         return viewController.photoGridView
     }
     
-    func willDisplayShareSheet() {
+    func photoShareServiceWillDisplayShareSheet(_ photoShareService: PhotoShareService) {
         viewController.shareAnimation(begin: true)
     }
     
-    func didDisplayShareSheet() {
+    func photoShareServiceDidDisplayShareSheet(_ photoShareService: PhotoShareService) {
         viewController.shareAnimation(begin: false)
     }
 }
 
 extension LogicController: ViewControllerDelegate {
     
-    func didSelect(indexPath: IndexPath) {
+    func viewControllerDidSelect(_ viewController: ViewController, indexPath: IndexPath) {
         layoutType = LayoutType.allCases[indexPath.row]
     }
 }

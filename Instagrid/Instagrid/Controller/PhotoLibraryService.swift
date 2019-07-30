@@ -11,7 +11,7 @@ import Photos
 
 protocol PhotoLibraryServiceDelegate: class {
     
-    func didChoose(image: UIImage, indexPath: IndexPath)
+    func photoLibraryService(_ photoLibraryService: PhotoLibraryService, didChoose image: UIImage, at indexPath: IndexPath)
 }
 
 class PhotoLibraryService: NSObject {
@@ -61,7 +61,7 @@ extension PhotoLibraryService: UIImagePickerControllerDelegate {
         let image = info[.originalImage] as! UIImage
         
         if let indexPath = indexPath {
-            delegate?.didChoose(image: image, indexPath: indexPath)
+            delegate?.photoLibraryService(self, didChoose: image, at: indexPath)
         }
     }
 }

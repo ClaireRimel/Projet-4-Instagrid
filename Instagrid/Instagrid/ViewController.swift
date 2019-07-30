@@ -10,7 +10,7 @@ import UIKit
 
 protocol ViewControllerDelegate: class {
     
-    func didSelect(indexPath: IndexPath)
+    func viewControllerDidSelect(_ viewController: ViewController, indexPath: IndexPath)
 }
 
 class ViewController: UIViewController {
@@ -112,15 +112,15 @@ class ViewController: UIViewController {
 
 extension ViewController: FooterViewDelegate {
     
-    func didSelect(indexPath: IndexPath) {
-        delegate?.didSelect(indexPath: indexPath)
+    func footerViewDidSelect(_ footerView: FooterView, indexPath: IndexPath) {
+        delegate?.viewControllerDidSelect(self, indexPath: indexPath)
     }
 }
 
 extension ViewController: PhotoGridViewDelegate {
     
-    func didSelect(indexPath: IndexPath) {
-        photoLibraryService.photoAccess(indexPath: indexPath,
-                                                viewController: self)
+    func photoGridViewDidSelect(_ photoGridView: PhotoGridView, indexPath: IndexPath) {
+        PhotoLibraryService.photoAccess(indexPath: indexPath,
+                                        viewController: self)
     }
 }
