@@ -33,6 +33,8 @@ class ViewController: UIViewController {
 
     weak var delegate: ViewControllerDelegate?
     
+    var isAnimating: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         footerView.delegate = self
@@ -60,6 +62,15 @@ class ViewController: UIViewController {
         
         footerView.didChangeDeviceOrientation()
         
+        if isAnimating {
+            photoGridView.isHidden = true
+            swipeToShareStackView.isHidden = true
+            photoGridView.layer.removeAllAnimations()
+            swipeToShareStackView.layer.removeAllAnimations()
+        }
+        
+        
+        // Check if the Share Animation is Active, if true, change the position of the photoGrid to go outside of the screen
         if isShareAnimationActive {
             switch UIDevice.current.orientation {
             case .portrait:
@@ -75,6 +86,14 @@ class ViewController: UIViewController {
             default:
                 break
             }
+        // Use to force to reappear in the center of the screen
+        } else {
+            photoGridCenterXConstraint.constant = 0
+            photoGridCenterYConstraint.constant = 0
+            view.layoutIfNeeded()
+            
+            photoGridView.isHidden = false
+            swipeToShareStackView.isHidden = false
         }
     }
     
@@ -94,10 +113,21 @@ class ViewController: UIViewController {
             break
         }
         
-        UIView.animate(withDuration: 1) {
+        isAnimating = true
+        if !begin {
+            photoGridView.isHidden = false
+            swipeToShareStackView.isHidden = false
+        }
+        // Initialize the animation duration to 1 sec
+        
+        UIView.animate(withDuration: 1.0, animations: {
             self.view.layoutIfNeeded()
-            self.photoGridView.alpha = begin ? 0.0 : 1.0
-            self.swipeToShareStackView.alpha = begin ? 0.0 : 1.0
+        }) { (isCompleted) in
+            if begin && isCompleted {
+                self.photoGridView.isHidden = true
+                self.swipeToShareStackView.isHidden = true
+            }
+          self.isAnimating = false
         }
     }
     
