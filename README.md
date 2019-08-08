@@ -1,4 +1,4 @@
-#Projet 4: Développez Instagrid
+# Projet 4: Développez Instagrid
 
 
 Instagrid is a service that allows you to combine several pictures together before sharing it with your friends. It is available on iPhone (from iOS 11.0) and avaible in portrait and landscape modes.
