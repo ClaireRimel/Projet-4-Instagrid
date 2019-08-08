@@ -70,7 +70,7 @@ extension LayoutType {
             case .threeTopThreeCenterThreeBottom:
                 return 3
             }
-        // The current logic only supports 2 sections, so in case of an API misuse we'll provide a default 0 value
+        // The current logic only supports 3 sections, so in case of an API misuse we'll provide a default 0 value
         default:
             return 0
         }

@@ -17,19 +17,22 @@ class FooterView: UIView {
 
     @IBOutlet var layoutCollectionView: UICollectionView!
   
+    //We put is this constent, all cases of LayoutType available
     let array = LayoutType.allCases
     
     weak var delegate: FooterViewDelegate?
     
+    //Gets executed when the view gets loaded on memory, allowing us to do an initial setup on the collection view.
     override func awakeFromNib() {
         super.awakeFromNib()
         layoutCollectionView.dataSource = self
         layoutCollectionView.delegate = self
         
-        // We will programmatically force for the first layout to be selected
+        // We programmatically force for the first layout to be selected
         layoutCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .left)
     }
 
+    //It changes the scroll direction of the collection view based on the device's current orientation
     func didChangeDeviceOrientation() {
         guard let layout = layoutCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         
@@ -44,6 +47,7 @@ class FooterView: UIView {
     }
 }
 
+//By making the class to conform to the UICollectionViewDataSource protocol, we provide the require data to display all the available layout cases.
 extension FooterView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -61,6 +65,7 @@ extension FooterView: UICollectionViewDataSource {
     }
 }
 
+//By making the class conform to the UICollectionViewDelegate protocol, we allow the class to give the indexPath of the layout selected by the user to its delegate.
 extension FooterView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -68,6 +73,7 @@ extension FooterView: UICollectionViewDelegate {
     }
 }
 
+//By making the class conform to the UICollectionViewDelegateFlowLayout, we define the cell's size.
 extension FooterView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

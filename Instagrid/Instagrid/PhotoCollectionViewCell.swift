@@ -13,6 +13,8 @@ enum PhotoType {
     case photo(UIImage)
 }
 
+//This subclass represents an image inside the photo grid displayed to the user
+//Based on the given PhotoType value, it displays either an image selected from the photo library or a placerholder image if no selection has yet been done
 class PhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var photoImageView: UIImageView!
