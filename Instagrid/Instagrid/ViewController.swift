@@ -55,7 +55,7 @@ class ViewController: UIViewController {
     @objc func didChangeDeviceOrientation() {
         //We use the event to set the correct swipeGesture direction.
         switch UIDevice.current.orientation {
-        case .portrait:
+        case .portrait, .portraitUpsideDown, .faceUp, .faceDown:
             swipeGesture.direction = .up
         case .landscapeLeft, .landscapeRight:
             swipeGesture.direction = .left
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
         //If the share sheet is visible, it changes the position of the photo grid to be outside of the screen depending on the new device orientation
         if isSharing {
             switch UIDevice.current.orientation {
-            case .portrait:
+            case .portrait, .portraitUpsideDown, .faceUp, .faceDown:
                 photoGridCenterYConstraint.constant = -1000
                 photoGridCenterXConstraint.constant = 0
                 view.layoutIfNeeded()
@@ -113,10 +113,15 @@ class ViewController: UIViewController {
         
         //Sets a offset, depending on the device orientation, to animate the photo grid outside the screen
         switch UIDevice.current.orientation {
-        case .portrait:
+        case .portrait, .portraitUpsideDown, .faceUp, .faceDown:
             photoGridCenterYConstraint.constant = begin ? -1000 : 0
         case .landscapeLeft, .landscapeRight:
             photoGridCenterXConstraint.constant = begin ? -1000 : 0
+            
+            //Apparently this case appears while first launching the app on simulator if it has the portrait orientation set.
+        case .unknown:
+            photoGridCenterYConstraint.constant = begin ? -1000 : 0
+            
         default:
             break
         }

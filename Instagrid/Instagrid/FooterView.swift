@@ -37,7 +37,7 @@ class FooterView: UIView {
         guard let layout = layoutCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         
         switch UIDevice.current.orientation {
-        case .portrait:
+        case .portrait, .portraitUpsideDown, .faceUp, .faceDown:
             layout.scrollDirection = .horizontal
         case .landscapeLeft, .landscapeRight:
             layout.scrollDirection = .vertical
